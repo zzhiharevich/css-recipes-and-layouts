@@ -8,3 +8,9 @@ app.listen(port, (err) => {
     }
     console.log(`Server is listening on ${port}`)
 })
+app.get('/', (request, response) => {
+    response.sendFile(__dirname + '/public/index.html')
+})
+app.get('/*', (request, response) => {
+    response.sendFile(__dirname + `/public${request.path}.html`)
+})
